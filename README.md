@@ -1,11 +1,11 @@
 # Relayer Post Mortem: Nomos ICA test - XION testnet 
 
-**BLOCKERS**  
+**Blockers**  
 
 - RPC query response times due to channel state bloat
 - neither `hermes` no `rly` seem to be able to deal with the channel state bloat and successfully close channels.  
 
-**ACTION ITEMS**  
+**Action Items**  
 
 - [x] discuss results with `hermes` team
 - [ ] feature request for `hermes` to batch channel handshakes
