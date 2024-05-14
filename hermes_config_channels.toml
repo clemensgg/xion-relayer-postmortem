@@ -1,0 +1,98 @@
+[[chains]]
+id = 'xion-testnet-1'
+rpc_addr = 'http://127.0.0.1:2131'
+grpc_addr = 'http://127.0.0.1:2132'
+event_source = { mode = 'pull', interval = '500ms' }
+rpc_timeout = '10s'
+account_prefix = 'xion'
+key_name = 'burnt_1'
+address_type = { derivation = 'cosmos' }
+store_prefix = 'ibc'
+default_gas = 2000000
+max_gas = 5000000
+gas_price = { price = 0.0, denom = 'uxion' }
+gas_multiplier = 1.2
+max_msg_num = 25
+max_tx_size = 180000
+clock_drift = '15s'
+max_block_time = '10s'
+trusting_period = '48h'
+memo_prefix = 'relayed by CryptoCrew Validators'
+trust_threshold = { numerator = '2', denominator = '3' }
+client_refresh_rate = '1/30'
+max_grpc_decoding_size = 648251000 # updated
+[chains.packet_filter]
+policy = 'allow'
+list = [  
+  ['icahost', '*'], 
+  ['wasm.*', '*'], 
+]
+
+
+[[chains]]
+id = "injective-888"
+type = "CosmosSdk"
+event_source = { mode = 'pull', interval = '500ms' }
+grpc_addr = "http://127.0.0.1:2122"
+rpc_addr = "http://127.0.0.1:2121"
+rpc_timeout = "10s"
+account_prefix = "inj"
+key_name = 'burnt_1'
+key_store_type = "Test"
+store_prefix = "ibc"
+default_gas = 2000000
+max_gas = 50000000
+gas_multiplier = 1.5
+max_msg_num = 30
+max_tx_size = 179999
+clock_drift = '15s'
+max_block_time = '15s'
+trusting_period = '224h'
+memo_prefix = "relayed by CryptoCrew Validators"
+sequential_batch_tx = false
+gas_price = { price = 500000000, denom = 'inj' }
+trust_threshold = { numerator = '2', denominator = '3' }
+client_refresh_rate = '1/30'
+max_grpc_decoding_size = 648251000 # updated
+[chains.address_type]
+derivation = "ethermint"
+[chains.address_type.proto_type]
+pk_type = "/injective.crypto.v1beta1.ethsecp256k1.PubKey"
+[chains.packet_filter]
+policy = 'allow'
+list = [  
+  ['icahost', '*'], 
+  ['wasm.*', '*'], 
+]
+
+
+[global]
+log_level = "info"
+
+[mode.clients]
+enabled = false
+refresh = false
+misbehaviour = false
+
+[mode.connections]
+enabled = false
+
+[mode.channels]
+enabled = true
+
+[mode.packets]
+enabled = false
+clear_interval = 10
+clear_on_start = false
+tx_confirmation = false
+auto_register_counterparty_payee = false
+
+[rest]
+enabled = false
+host = "0.0.0.0"
+port = 19100
+
+[telemetry]
+enabled = false
+host = "0.0.0.0"
+port = 19101
